@@ -65,6 +65,24 @@ Create a file named `manifest.json` next to `vite.config.js`.
 }
 ```
 
+## Note: make sure to update `tsconfig.node.json` file
+When you update your `vite.config.ts` file then you should get an error called (down below)
+```console
+manifest.json is not listed within the file list of the project.
+Projects must list all files or use an 'include' pattern.
+```
+Don't worry, you'll need to do a simple thing to solve this error.
+- Open your `tsconfig.node.json` file from the project root directory.
+- Then find the `include` property.
+- Now update the array with this code. Besides, there is no need to change anything...
+```json
+{
+  "include": ["vite.config.ts", "manifest.json"]
+}
+```
+> Now the error is gone.😊
+
+
 ## First development build
 
 Time to run the dev command. 🤞
