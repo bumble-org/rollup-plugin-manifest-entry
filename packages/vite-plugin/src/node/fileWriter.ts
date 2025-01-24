@@ -1,4 +1,5 @@
 import fsx from 'fs-extra'
+import { posix as path } from 'path'
 import { performance } from 'perf_hooks'
 import { OutputOptions, rollup, RollupOptions } from 'rollup'
 import { concatWith, firstValueFrom, mergeMap, of, takeUntil } from 'rxjs'
@@ -56,7 +57,7 @@ export async function start({
   const rollupOutputOptions = [rollupOptions.output].flat()[0]
   const outputOptions: OutputOptions = {
     ...rollupOutputOptions,
-    dir: outDir,
+    dir: path.resolve(server.config.root ?? process.cwd(), outDir),
     format: 'es',
   }
 
