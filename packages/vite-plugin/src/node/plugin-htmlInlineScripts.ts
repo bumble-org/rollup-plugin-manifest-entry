@@ -74,7 +74,7 @@ export const pluginHtmlInlineScripts: CrxPluginFn = () => {
 
       const key = toKey(ctx)
       const page = pages.get(key)!
-      page.scripts.push(...scripts)
+      page?.scripts.push(...scripts)
       pages.set(key, page)
 
       return html ? { html, tags: [...tags] } : [...tags]
